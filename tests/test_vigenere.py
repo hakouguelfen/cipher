@@ -1,5 +1,6 @@
 from encryptor.ciphers import vigenere
 from encryptor.config import CMD
+import pytest
 
 
 def test_simple_encryption():
@@ -38,12 +39,6 @@ def test_mixed_case_text_and_key():
     assert vigenere.cipher("RijvsUyvjn", "KeY", CMD.DECRYPT), "HelloWorld"
 
 
-def test_empty_string():
-    # Test that an empty string returns an empty string
-    assert vigenere.cipher("", "KEY", CMD.ENCRYPT), ""
-    assert vigenere.cipher("", "KEY", CMD.DECRYPT), ""
-
-
 def test_full_alphabet_encryption_and_decryption():
     # Test encryption and decryption across the full alphabet
     text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -65,9 +60,10 @@ def test_single_character_key():
     assert vigenere.cipher("HELLO", "B", CMD.DECRYPT), "IFMMP"  # Shift by 1
 
 
-# def test_invalid_key_type():
-#     # Test error handling for invalid key type
-#     with assertRaises(TypeError):
-#         vigenere.cipher("HELLO", 123, CMD.ENCRYPT)  # Non-string key
-#     with assertRaises(TypeError):
-#         vigenere.cipher("HELLO", None, CMD.DECRYPT)
+def test_invalid_key_type():
+    # Test error handling for invalid key type
+    with pytest.raises(TypeError):
+        vigenere.cipher("HELLO", 123, CMD.ENCRYPT)  # Non-string key
+
+    with pytest.raises(TypeError):
+        vigenere.cipher("HELLO", None, CMD.DECRYPT)

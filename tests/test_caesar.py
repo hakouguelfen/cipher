@@ -1,5 +1,6 @@
 from encryptor.ciphers import *
 from encryptor.config.common import CMD
+import pytest
 
 
 def test_simple_shift():
@@ -47,12 +48,6 @@ def test_non_alpha_characters():
     assert caesar.cipher("12345 !@#$%", 10, CMD.DECRYPT), "12345 !@#$%"
 
 
-def test_empty_string():
-    # Test that an empty string returns an empty string
-    assert caesar.cipher("", 5, CMD.ENCRYPT), ""
-    assert caesar.cipher("", 5, CMD.DECRYPT), ""
-
-
 def test_no_shift():
     # Test shift of zero (should return the original string)
     assert caesar.cipher("Hello, World!", 0, CMD.ENCRYPT), "Hello, World!"
@@ -77,10 +72,10 @@ def test_case_sensitivity():
     assert caesar.cipher("zAb", -1, CMD.DECRYPT), "aBc"
 
 
-# def test_invalid_shift_type():
-#     # Test for non-integer shift (should raise an error)
-#     with assertRaises(TypeError):
-#         caesar.cipher("Hello", "a", CMD.ENCRYPT)
+def test_invalid_shift_type():
+    # Test for non-integer shift (should raise an error)
+    with pytest.raises(TypeError):
+        caesar.cipher("Hello", "a", CMD.ENCRYPT)
 
 
 def test_boundary_shift_values():

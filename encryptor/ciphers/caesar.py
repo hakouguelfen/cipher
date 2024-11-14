@@ -18,10 +18,6 @@ def cipher(text: str, key: int, cmd: CMD) -> str:
             case CMD.DECRYPT:
                 char_code = (char_code - key) % NUM_LETTERS
 
-        result += chr(shift_base + char_code)
+        result += chr(char_code + shift_base)
 
     return result
-
-
-res = cipher("", 5, CMD.ENCRYPT)
-print(res)
