@@ -78,20 +78,25 @@ tests/
  * Encryption/decryption functionality
  * Edge cases
  * Input validation
-* Integration Tests: Testing cipher interactions
- * Command-line interface
- * File handling
- * End-to-end encryption/decryption
 * Parametrized Tests: Testing multiple inputs
 
 ```python
-@pytest.mark.parametrize("input_text,shift,expected", [
-    ("hello", 3, "khoor"),
-    ("WORLD", 1, "XPSME"),
-    ("Hello, World!", 5, "Mjqqt, Btwqi!")
-])
-def test_caesar_encrypt(input_text, shift, expected):
-    assert caesar_encrypt(input_text, shift) == expected
+messages = [
+    ("", 1),  # Edge case: empty message
+    ("A", 1),  # Single character
+    ("AB", 1),  # Single key
+    ("AB", 2),  # Key equal to message length
+    ("This is a test message!", 4),  # Common case
+    ("Short", 10),  # Key greater than message length
+    ("EdgeCase", 3),  # Odd message length
+    ("AnotherTest", 5),  # Key not dividing message length evenly
+]
+@pytest.mark.parametrize("message, key", messages)
+def test_encrypt_decrypt(message, key):
+    """Test encryption followed by decryption returns the original message."""
+    encrypted = transposition.cipher(message, key, CMD.ENCRYPT)
+    decrypted = transposition.cipher(encrypted, key, CMD.DECRYPT)
+    assert decrypted == message
 ```
 
 ## Supported Ciphers
