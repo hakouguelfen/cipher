@@ -69,8 +69,7 @@ tests/
 ├── test_caesar.py
 ├── test_vigenere.py
 ├── test_substitution.py
-├── test_atbash.py
-└── test_utils.py
+└── test_transposition.py
 ```
 
 ### Test Categories

@@ -11,3 +11,4 @@ htmlcov
 __pycache__/
 env
 .pytest_cache
+.coverage
