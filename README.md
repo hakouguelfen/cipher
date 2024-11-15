@@ -32,8 +32,8 @@ pip install -r requirements.txt
 ```
 
 4. Dependencies include:
-* pytest
-* pytest-cov (for coverage reports)
+ * pytest
+ * pytest-cov (for coverage reports)
 
 ## Usage
 ### Command Line Interface
@@ -44,10 +44,10 @@ python cipher_app.py -m [mode] -c [cipher] -t [text] -k [key]
 
 Arguments:
 
-* -m, --mode: 'encrypt' or 'decrypt'
-* -c, --cipher: Type of cipher (caesar, vigenere, substitution, atbash)
-* -t, --text: Text to encrypt/decrypt
-* -k, --key: Cipher key (if required)
+* `-m, --mode`: 'encrypt' or 'decrypt'
+* `-c, --cipher`: Type of cipher (caesar, vigenere, substitution, atbash)
+* `-t, --text`: Text to encrypt/decrypt
+* `-k, --key`: Cipher key (if required)
 
 ### Examples
 Encrypt using Caesar Cipher:
