@@ -1,4 +1,4 @@
-from encryptor.config.common import CMD, NUM_LETTERS
+from cipher.config.common import CMD, NUM_LETTERS
 
 
 def cipher(text: str, key: int, cmd: CMD) -> str:

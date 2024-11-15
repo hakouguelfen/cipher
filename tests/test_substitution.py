@@ -1,5 +1,5 @@
-from encryptor.ciphers import substitution
-from encryptor.config.common import CMD
+from cipher.ciphers import substitution
+from cipher.config.common import CMD
 import pytest
 
 

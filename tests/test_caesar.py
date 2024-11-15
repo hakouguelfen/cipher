@@ -1,5 +1,5 @@
-from encryptor.ciphers import *
-from encryptor.config.common import CMD
+from cipher.ciphers import caesar
+from cipher.config.common import CMD
 import pytest
 
 

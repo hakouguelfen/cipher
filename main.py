@@ -3,9 +3,9 @@ from tkinter import ttk
 from tkinter.scrolledtext import ScrolledText
 from ttkthemes import ThemedTk
 
-from config import ALGORITHMS, CMD
-from ciphers import caesar, vigenere, substitution
-from ciphers import transposition
+from cipher.config.common import ALGORITHMS, CMD
+from cipher.ciphers import caesar, vigenere, substitution
+from cipher.ciphers import transposition
 
 
 class Encryptor:

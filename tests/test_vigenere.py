@@ -1,5 +1,5 @@
-from encryptor.ciphers import vigenere
-from encryptor.config import CMD
+from cipher.ciphers import vigenere
+from cipher.config.common import CMD
 import pytest
 
 

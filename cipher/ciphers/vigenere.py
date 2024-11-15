@@ -1,7 +1,7 @@
-from encryptor.config.common import CMD, NUM_LETTERS
+from cipher.config.common import CMD, NUM_LETTERS
 
 
-def create_keyword(text: str, key: str) -> str:
+def _create_keyword(text: str, key: str) -> str:
     key = key.replace(" ", "")
     repeat = len(text) // len(key) + 1
     return (key * repeat)[: len(text)]
@@ -11,7 +11,7 @@ def cipher(text: str, key: str, cmd: CMD) -> str:
     if not text or not key or str(key).isdigit():
         raise TypeError
 
-    keyword = create_keyword(text, key)
+    keyword = _create_keyword(text, key)
 
     result = ""
     step = 0
