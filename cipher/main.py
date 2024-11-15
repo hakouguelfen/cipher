@@ -5,7 +5,7 @@ from ttkthemes import ThemedTk
 
 from config import ALGORITHMS, CMD
 from ciphers import caesar, vigenere, substitution
-from encryptor.encryptor.ciphers import transposition
+from ciphers import transposition
 
 
 class Encryptor:
