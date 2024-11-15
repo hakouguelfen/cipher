@@ -5,6 +5,7 @@ from ttkthemes import ThemedTk
 
 from config import ALGORITHMS, CMD
 from ciphers import caesar, vigenere, substitution
+from encryptor.encryptor.ciphers import transposition
 
 
 class Encryptor:
@@ -44,6 +45,7 @@ class Encryptor:
             ALGORITHMS.CAESAR.value,
             ALGORITHMS.VIGENERE.value,
             ALGORITHMS.SUBSTITUTION.value,
+            ALGORITHMS.TRANSPOSITION.value,
         )
         algorithms.current(0)
         algorithms.grid(row=1, column=1, sticky=tk.W)
@@ -93,29 +95,25 @@ class Encryptor:
         self.build_controller()
 
     def apply_cipher(self, cmd: CMD):
-        input_msg = self.input_msg.get("1.0", "end-1c")
-
         match self.current_algorithm.get():
             case ALGORITHMS.CAESAR.value:
-                output_msg = caesar.cipher(
-                    text=input_msg, key=int(self.current_key.get()), cmd=cmd
-                )
-                self.output_msg.delete("1.0", "end")
-                self.output_msg.insert("1.0", output_msg)
+                self.run(caesar.cipher, int(self.current_key.get()), cmd)
 
             case ALGORITHMS.VIGENERE.value:
-                output_msg = vigenere.cipher(
-                    text=input_msg, key=self.current_key.get(), cmd=cmd
-                )
-                self.output_msg.delete("1.0", "end")
-                self.output_msg.insert("1.0", output_msg)
+                self.run(vigenere.cipher, self.current_key.get(), cmd)
 
             case ALGORITHMS.SUBSTITUTION.value:
-                output_msg = substitution.cipher(
-                    text=input_msg, key=self.current_key.get(), cmd=cmd
-                )
-                self.output_msg.delete("1.0", "end")
-                self.output_msg.insert("1.0", output_msg)
+                self.run(substitution.cipher, self.current_key.get(), cmd)
+
+            case ALGORITHMS.TRANSPOSITION.value:
+                self.run(transposition.cipher, int(self.current_key.get()), cmd)
+
+    def run(self, fun, key, cmd):
+        input_msg = self.input_msg.get("1.0", "end-1c")
+
+        self.output_msg.delete("1.0", "end")
+        output_msg = fun(text=input_msg, key=key, cmd=cmd)
+        self.output_msg.insert("1.0", output_msg)
 
 
 if __name__ == "__main__":

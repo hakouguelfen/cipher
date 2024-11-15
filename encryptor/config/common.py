@@ -14,3 +14,4 @@ class ALGORITHMS(Enum):
     CAESAR = "Caesar"
     VIGENERE = "Vigenere"
     SUBSTITUTION = "Substitution"
+    TRANSPOSITION = "Uransposition"
