@@ -6,17 +6,16 @@ A Python application that implements various classical cryptographic ciphers for
  * Caesar Cipher
  * Vigenère Cipher
  * Substitution Cipher
- * Atbash Cipher
+ * Transposition Cipher
 * Support for both encryption and decryption
-* Command-line interface
-* Input validation and error handling
+* GUI interface
 * Support for uppercase, lowercase letters, and spaces
 * Comprehensive test suite using pytest
 
 ## Installation
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/classic-cipher-app.git
+git clone https://github.com/hakouguelfen/cipher.git
 cd classic-cipher-app
 ```
 
@@ -34,32 +33,14 @@ pip install -r requirements.txt
 4. Dependencies include:
  * pytest
  * pytest-cov (for coverage reports)
+ * tkinter (for graphical interface)
+ * ttkthemes (for modern themes)
 
 ## Usage
 ### Command Line Interface
 
 ```bash
-python cipher_app.py -m [mode] -c [cipher] -t [text] -k [key]
-```
-
-Arguments:
-
-* `-m, --mode`: 'encrypt' or 'decrypt'
-* `-c, --cipher`: Type of cipher (caesar, vigenere, substitution, atbash)
-* `-t, --text`: Text to encrypt/decrypt
-* `-k, --key`: Cipher key (if required)
-
-### Examples
-Encrypt using Caesar Cipher:
-
-```bash
-python cipher_app.py -m encrypt -c caesar -t "Hello World" -k 3
-```
-
-Decrypt using Vigenère Cipher:
-
-```bash
-python cipher_app.py -m decrypt -c vigenere -t "Eiffi Vspwh" -k "KEY"
+python cipher/main.py
 ```
 
 ## Testing
