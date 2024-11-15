@@ -4,7 +4,7 @@ from tkinter.scrolledtext import ScrolledText
 from ttkthemes import ThemedTk
 
 from config import ALGORITHMS, CMD
-from ciphers import *
+from ciphers import caesar, vigenere, substitution
 
 
 class Encryptor:
@@ -40,7 +40,11 @@ class Encryptor:
             width=30,
             state="readonly",
         )
-        algorithms["value"] = (ALGORITHMS.CAESAR.value, ALGORITHMS.VIGENERE.value)
+        algorithms["value"] = (
+            ALGORITHMS.CAESAR.value,
+            ALGORITHMS.VIGENERE.value,
+            ALGORITHMS.SUBSTITUTION.value,
+        )
         algorithms.current(0)
         algorithms.grid(row=1, column=1, sticky=tk.W)
 
@@ -106,11 +110,14 @@ class Encryptor:
                 self.output_msg.delete("1.0", "end")
                 self.output_msg.insert("1.0", output_msg)
 
-
-def main():
-    app = Encryptor()
-    app.root.mainloop()
+            case ALGORITHMS.SUBSTITUTION.value:
+                output_msg = substitution.cipher(
+                    text=input_msg, key=self.current_key.get(), cmd=cmd
+                )
+                self.output_msg.delete("1.0", "end")
+                self.output_msg.insert("1.0", output_msg)
 
 
 if __name__ == "__main__":
-    main()
+    app = Encryptor()
+    app.root.mainloop()

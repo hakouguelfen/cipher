@@ -13,3 +13,4 @@ class CMD(Enum):
 class ALGORITHMS(Enum):
     CAESAR = "Caesar"
     VIGENERE = "Vigenere"
+    SUBSTITUTION = "Substitution"
